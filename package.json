@@ -6,13 +6,16 @@
   "author": "Diamond Purvis",
   "license": "MIT",
   "dependencies": {
+    "cleaner": "^2.0.0-alpha",
     "express": "^4.17.1",
     "helmet": "^3.18.0",
     "knex": "^0.17.6",
+    "knex-cleaner": "^1.1.4",
     "node": "^12.4.0",
     "sqlite3": "^4.0.9"
-  }, 
+  },
   "scripts": {
+    "start": "nodemon index.js",
     "server": "nodemon"
   },
   "devDependencies": {
