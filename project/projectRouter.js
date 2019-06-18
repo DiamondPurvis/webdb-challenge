@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
 });
 
 //check
-router.get('/project/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const { id } = req.params;
         db('projects')
            .where({ id: id })
