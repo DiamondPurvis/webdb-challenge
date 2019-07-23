@@ -1,6 +1,7 @@
+const knex = require('knex');
 const router = require('express').Router();
 
-const knex = require('knex');
+
 
 const knexConfig = {
     client: 'sqlite3',
@@ -54,6 +55,45 @@ router.get('/:id', (req, res) => {
             .catch(err => {
                 res.status(500).json({ Error: "There was an error getting that" })
             });
+});
+
+//
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    db('projects').where({id: id}).del().then(response => {
+        if (response === 0) {
+            res.status(404).json({ERROR: "ID Not found"});
+            console.log("FAIL, ID Not found");
+            return;
+        } else if (response === 1) {
+            res.status(200).json({successfulDelete: `id: ${id}`});
+            console.log("SUCCESS");
+        };
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({serverError: "FAIL"});
+        res.end();
+    });
+});
+
+//
+router.put('/:id', (req, res) => {
+    const {id} = req.params;
+    const {name, description, completed} = req.body;
+    if(!name && !description && !completed) {
+        res.status(400).json({error: "bad request from user"});
+        return;
+    };
+    db('projects').where({id: id}).update({name, description, completed}).then(response => {
+        if (response === 0) {
+            res.status(404).json({error: "ID not found"});
+            return;
+        } else if (response === 1) {
+            res.status(200).json(["success"]);
+        };
+    }).catch(err => {
+        res.status(500).json(err);
+    });
 });
 
 module.exports = router; 
