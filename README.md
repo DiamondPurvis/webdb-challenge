@@ -33,9 +33,22 @@ This will be akin to the Web API that you built in the last sprint, only this ti
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 1. Explain the difference between `RDBMS` and `SQL`.
+
+  RDBMS: Relational Database Managment System is the database itself. Data is stored in a row and a columns format
+
+  SQL: Is the language we use to interact and manage RDBMS
+
 1. Why do tables need a `primary key`?
+
+  It indentifies each record in the table uniquely.
+
 1. What is the name given to a table column that references the primary key on another table.
-1. What do we need in order to have a _many to many_ relationship between two tables.
+
+  The name is foreign Key
+
+1. What do we need in order to have a many to many relationship between two tables.
+
+  We need to makje a junction table because sql doesnt allow us to store alot of values inside a column
 
 ## Project Set Up
 
@@ -120,3 +133,4 @@ When retrieving an `action` by _id_, add a property that lists all the `contexts
 **Remember to run `npm init -y` to generate a _package.json_ before adding your dependencies.**
 
 _Good luck and have fun!_
+Start
